@@ -17,6 +17,7 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from masterQA.core import browser_launcher
 from masterQA.data import settings
@@ -24,6 +25,7 @@ from masterQA.data.settings import environment as env
 from masterQA.fixtures import page_utils
 from masterQA.fixtures import page_actions as ps
 from colorama import Fore, Back, Style
+
 logging.getLogger("requests").setLevel(logging.ERROR)
 logging.getLogger("urllib3").setLevel(logging.ERROR)
 urllib3.disable_warnings()
@@ -204,6 +206,69 @@ class BaseCase(unittest.TestCase):
             actions.move_to_element(element).perform()
         except StaleElementReferenceException:
             actions.move_to_element(element).perform()
+
+    def Select_by_visible_text(self, visible_text, locator, locatorType=None):
+        if not locatorType:
+            if page_utils.is_xpath_selector(locator):
+                locatorType = 'xpath'
+            elif page_utils.is_link_text_selector():
+                locatorType = 'link'
+            elif page_utils.is_name_selector():
+                locatorType = 'name'
+            else:
+                locatorType = 'css'
+        byType = self.getByType(locatorType)
+        wait = WebDriverWait(self.driver, settings.SMALL_TIMEOUT)
+        element = wait.until(expected_conditions.visibility_of_element_located((byType, locator)))
+        select = Select(element)
+        select.select_by_index(visible_text)
+        if True:
+            print(Fore.GREEN + str(visible_text )+ " was selected for " + str(locator))
+        else:
+            select.deselect_by_index(index)
+            select.select_by_index(visible_text)
+
+    def Select_by_index(self, index, locator, locatorType=None):
+        if not locatorType:
+            if page_utils.is_xpath_selector(locator):
+                locatorType = 'xpath'
+            elif page_utils.is_link_text_selector():
+                locatorType = 'link'
+            elif page_utils.is_name_selector():
+                locatorType = 'name'
+            else:
+                locatorType = 'css'
+        byType = self.getByType(locatorType)
+        wait = WebDriverWait(self.driver, settings.SMALL_TIMEOUT)
+        element = wait.until(expected_conditions.visibility_of_element_located((byType, locator)))
+        select = Select(element)
+        select.select_by_index(index)
+        if True:
+            print(Fore.GREEN + str(index) + " was selected for " + str(locator))
+        else:
+            select.deselect_by_index(index)
+            select.select_by_index(index)
+
+    def Select_by_value(self, value, locator, locatorType=None):
+        if not locatorType:
+            if page_utils.is_xpath_selector(locator):
+                locatorType = 'xpath'
+            elif page_utils.is_link_text_selector():
+                locatorType = 'link'
+            elif page_utils.is_name_selector():
+                locatorType = 'name'
+            else:
+                locatorType = 'css'
+        byType = self.getByType(locatorType)
+        wait = WebDriverWait(self.driver, settings.SMALL_TIMEOUT)
+        element = wait.until(expected_conditions.visibility_of_element_located((byType, locator)))
+        select = Select(element)
+        select.select_by_value(value)
+        if True:
+            print(Fore.GREEN + str(value) + " was selected for " + str(locator))
+        else:
+            select.deselect_by_value(index)
+            select.select_by_value(index)
 
     def Driver_tear_Down(self):
         return self.driver.close()
