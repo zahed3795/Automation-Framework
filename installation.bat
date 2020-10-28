@@ -24,16 +24,13 @@ pip install importlib-metadata==2.0.0
 pip install colorama==0.4.4
 pip install urllib3==1.25.10
 pip install cssselect==1.1.0
+pip install pytest-html
 py -m pip install --user virtualenv
 pip install --user pipenv
 pip install colorama
 cd masterQA\utilities\selenium_grid
 python download_selenium_server.py
-seleniumbase grid-hub start
-seleniumbase grid-node start
-npm install -g express
-npm install
-node server.js
+
 
 
 
