@@ -50,6 +50,11 @@ class MyTestClass(BaseCase):
         self.Press_Enter()
         # This Function Will Scroll Element Into View
         self.Scroll_Into_View()
-        
+        # This Function Will Help you to Submit
+        self.Submit("locator", locatorType= "Can be none if it is XPATH, CSS, Name and LinkText")
+        # This Function Will Help you to Click
+        self.Click("locator", locatorType= "Can be none if it is XPATH, CSS, Name and LinkText")
+        # This Function Will set windows size
+        self.set_window_size(1200, 1200)
 ```
 
