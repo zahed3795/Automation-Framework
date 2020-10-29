@@ -38,9 +38,13 @@ class BaseCase(unittest.TestCase):
         self.driver = None
         if True:
             self.driver = browser_launcher.DriverInstance(env.BROWSER)
+        self.__last_page_load_url = "data:,"
 
     def Open(self, URL):
-        """ Navigates the current browser window to the specified page. """
+        """ Navigates the current browser window to the specified page.
+        Proper use self.Click('//a[contains(text(),"Screener")]', "xpath", delay=5)
+        For slow click you can use 'delay=5' as parameter
+        """
         if type(URL) is str:
             URL = URL.strip()  # Remove leading and trailing whitespace
         if URL.startswith("://"):
@@ -49,7 +53,7 @@ class BaseCase(unittest.TestCase):
         self.driver.get(URL)
 
     # Element click
-    def Click(self, locator, locatorType=None):
+    def Click(self, locator, locatorType=None, delay=0):
         """ Click Function will help you to click any element """
         # If locatorType does not mention, below code will run
         if not locatorType:
@@ -61,17 +65,20 @@ class BaseCase(unittest.TestCase):
                 locatorType = 'name'
             else:
                 locatorType = 'css'
+
+        if delay and delay > 0:
+            time.sleep(delay)
         try:
             element = self.getElement(locator, locatorType)
             try:
                 element.click()
             except StaleElementReferenceException and WebDriverException:
-                ps.timeout(2)
+                time.sleep(0.16)
                 actions = self.KeyBoard()
                 actions.move_to_element(element).perform()
                 actions.click(element).perform()
         except:
-            print("Cannot click on the element with locator: " + locator + " locatorType: " + locatorType)
+            print("Cannot click on the element with locator: " + str(locator) + " locatorType: " + str(locatorType))
 
     # Enter text - Send Keys
     def Send_Text(self, locator, text, locatorType=None):
@@ -84,6 +91,28 @@ class BaseCase(unittest.TestCase):
                 locatorType = 'name'
             else:
                 locatorType = 'css'
+        self.Clear_Textbox(locator)
+        actions = self.KeyBoard()
+        element = self.getElement(locator, locatorType)
+        try:
+            element.send_keys(text)
+        except StaleElementReferenceException:
+            ps.timeout()
+            actions.move_to_element(element).perform()
+            actions.click(element).perform()
+            actions.click(element).send_keys(text).perform()
+
+    def Replace_existing_text(self, locator, text, locatorType=None):
+        if not locatorType:
+            if page_utils.is_xpath_selector(locator):
+                locatorType = 'xpath'
+            elif page_utils.is_link_text_selector():
+                locatorType = 'link'
+            elif page_utils.is_name_selector():
+                locatorType = 'name'
+            else:
+                locatorType = 'css'
+
         self.Clear_Textbox(locator)
         actions = self.KeyBoard()
         element = self.getElement(locator, locatorType)
@@ -128,6 +157,42 @@ class BaseCase(unittest.TestCase):
                     except ElementClickInterceptedException:
                         backspaces = Keys.BACK_SPACE * 20  # Is the answer to everything
                         actions.send_keys(backspaces).perform()
+
+    def Submit(self, locator, locatorType=None, delay=0):
+        """ Alternative to self.driver.find_element_by_*(SELECTOR).submit() """
+        if not locatorType:
+            if page_utils.is_xpath_selector(locator):
+                locatorType = 'xpath'
+            elif page_utils.is_link_text_selector():
+                locatorType = 'link'
+            elif page_utils.is_name_selector():
+                locatorType = 'name'
+            else:
+                locatorType = 'css'
+        self.WebDriver_Wait(locator, locatorType)
+        element = self.getElement(locator, locatorType)
+        if delay and delay > 0:
+            time.sleep(delay)
+        try:
+            element.submit()
+        except StaleElementReferenceException:
+            time.sleep(0.50)
+            element.submit()
+
+    def WebDriver_Wait(self, locator, locatorType=None):
+        if not locatorType:
+            if page_utils.is_xpath_selector(locator):
+                locatorType = 'xpath'
+            elif page_utils.is_link_text_selector():
+                locatorType = 'link'
+            elif page_utils.is_name_selector():
+                locatorType = 'name'
+            else:
+                locatorType = 'css'
+        byType = self.getByType(locatorType)
+        wait = WebDriverWait(self.driver, settings.SMALL_TIMEOUT).until(
+            expected_conditions.visibility_of_element_located((byType, locator)))
+        return wait
 
     # Clear Text Box Data
     def Dobul_Click(self, locator, locatorType):
@@ -223,7 +288,7 @@ class BaseCase(unittest.TestCase):
         select = Select(element)
         select.select_by_index(visible_text)
         if True:
-            print(Fore.GREEN + str(visible_text )+ " was selected for " + str(locator))
+            print(Fore.GREEN + str(visible_text) + " was selected for " + str(locator))
         else:
             select.deselect_by_index(index)
             select.select_by_index(visible_text)
@@ -272,6 +337,59 @@ class BaseCase(unittest.TestCase):
 
     def Driver_tear_Down(self):
         return self.driver.close()
+
+    def Refresh_page(self, delay=0):
+        # If the ad_block feature is enabled, then block ads for new URLs
+        current_url = self.driver.current_url
+        if not current_url == self.__last_page_load_url:
+            URL = self.driver.get(current_url)
+            if delay and delay > 0:
+                time.sleep(delay)
+            time.sleep(0.10)
+            self.driver.refresh()
+        return URL
+
+    def Get_current_url(self):
+        current_url = self.driver.current_url
+        if "%" in current_url and sys.version_info[0] >= 3:
+            try:
+                from urllib.parse import unquote
+                current_url = unquote(current_url, errors='strict')
+            except Exception:
+                pass
+        return current_url
+
+    def Get_page_title(self):
+        """Return Page Title"""
+        try:
+            self.driver.title
+        except StaleElementReferenceException:
+            time.sleep(0.30)
+            self.driver.title
+        return self.driver.title
+
+    def get_user_agent(self):
+        user_agent = self.driver.execute_script("return navigator.userAgent;")
+        return user_agent
+
+    def get_locale_code(self):
+        locale_code = self.driver.execute_script(
+            "return navigator.language || navigator.languages[0];")
+        return locale_code
+
+    def set_window_rect(self, x, y, width, height):
+        self.driver.set_window_rect(x, y, width, height)
+
+    def set_window_size(self, width, height):
+        self.driver.set_window_size(width, height)
+
+    def switch_to_default_window(self):
+        self.switch_to_window(0)
+
+    def switch_to_driver(self, driver):
+        """ Sets self.driver to the specified driver.
+            You may need this if using self.get_new_driver() in your code. """
+        self.driver = driver
 
     @classmethod
     def setUpClass(cls):
