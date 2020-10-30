@@ -10,7 +10,7 @@ class MyPlugin:
     pass
 
 
-pytest.main(["-s", '-v','-n 2', '--junitxml=Reports/report.xml', '--html=Reports/report.html'], plugins=[MyPlugin()])
+pytest.main(["-s", '-v', '-n 2', '--junitxml=Reports/report.xml', '--html=Reports/report.html'], plugins=[MyPlugin()])
 
 Report = os.path.dirname(os.path.realpath(__file__))
 HTML_Report = Report + "/pytest_html_report.html"
