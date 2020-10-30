@@ -63,7 +63,7 @@ setup(
     install_requires=[
         'webdriver_manager==3.2.2',
         'pytest==6.1.1',
-        'pytest-xdist==2.1.0',
+        'pytest-xdist==2.1.0;python_version<"3.5"',
         'parameterized==0.7.4',
         'cryptography==3.1.1',
         'requests==2.24.0',
