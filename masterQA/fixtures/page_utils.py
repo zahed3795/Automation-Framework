@@ -4,14 +4,15 @@ This module contains useful utility methods.
 import codecs
 import re
 import requests
+from colorama import Fore, Back, Style
 
 
 def get_domain_url(url):
     """
     Use this to convert a url like this:
-    https://blog.xkcd.com/2014/07/22/what-if-book-tour/
+    https://finviz.com/crypto.ashx
     Into this:
-    https://blog.xkcd.com
+    https://finviz.com
     """
     if not url.startswith("http://") and not url.startswith("https://"):
         return url
@@ -26,10 +27,9 @@ def is_xpath_selector(selector):
     """
     A basic method to determine if a selector is an xpath selector.
     """
-    if (selector.startswith('//')  or  (selector.startswith('/') or selector.startswith('./') or (
+    if (selector.startswith('//') or (selector.startswith('/') or selector.startswith('./') or (
             selector.startswith('(')))):
-        return True
-    return False
+        return selector
 
 
 def is_link_text_selector(selector):
@@ -38,7 +38,7 @@ def is_link_text_selector(selector):
     """
     if (selector.startswith('link=') or selector.startswith('link_text=') or (
             selector.startswith('text='))):
-        return True
+        return selector
     return False
 
 
@@ -60,41 +60,6 @@ def is_name_selector(selector):
     if selector.startswith('name='):
         return True
     return False
-
-
-def get_link_text_from_selector(selector):
-    """
-    A basic method to get the link text from a link text selector.
-    """
-    if selector.startswith('link='):
-        return selector.split('link=')[1]
-    elif selector.startswith('link_text='):
-        return selector.split('link_text=')[1]
-    elif selector.startswith('text='):
-        return selector.split('text=')[1]
-    return selector
-
-
-def get_partial_link_text_from_selector(selector):
-    """
-    A basic method to get the partial link text from a partial link selector.
-    """
-    if selector.startswith('partial_link='):
-        return selector.split('partial_link=')[1]
-    elif selector.startswith('partial_link_text='):
-        return selector.split('partial_link_text=')[1]
-    elif selector.startswith('partial_text='):
-        return selector.split('partial_text=')[1]
-    return selector
-
-
-def get_name_from_selector(selector):
-    """
-    A basic method to get the name from a name selector.
-    """
-    if selector.startswith('name='):
-        return selector.split('name=')[1]
-    return selector
 
 
 def is_valid_url(url):
@@ -124,9 +89,9 @@ def _get_unique_links(page_url, soup):
     if not page_url.startswith("http://") and (
             not page_url.startswith("https://")):
         return []
-    prefix = 'http:'
+    prefix = '\nhttp:'
     if page_url.startswith('https:'):
-        prefix = 'https:'
+        prefix = '\nhttps:'
     simple_url = page_url.split('://')[1]
     base_url = simple_url.split('/')[0]
     full_base_url = prefix + "//" + base_url
@@ -204,10 +169,14 @@ def _print_unique_links_with_status_codes(page_url, soup):
     links = _get_unique_links(page_url, soup)
     for link in links:
         status_code = _get_link_status_code(link)
-        print(link, " -> ", status_code)
+        print(link, " -> ", Fore.GREEN + str(status_code))
 
 
 def _download_file_to(file_url, destination_folder, new_file_name=None):
+    """
+
+    :rtype: object
+    """
     if new_file_name:
         file_name = new_file_name
     else:

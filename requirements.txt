@@ -35,3 +35,5 @@ virtualenv>=20.0.35
 pymysql==0.10.1
 pyopenssl==19.1.0
 pytest-rerunfailures==9.1.1
+soupsieve==2.0.1
+beautifulsoup4==4.9.3

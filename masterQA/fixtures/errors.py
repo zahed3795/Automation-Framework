@@ -1,8 +1,8 @@
 """
-SeleniumBase MySQL plugin-related exceptions.
+MySQL plugin-related exceptions.
 Raising one of these in a test will cause the
 test-state to be logged appropriately in the DB
-for tests that use the SeleniumBase MySQL plugin.
+for tests that use the Super MySQL plugin.
 """
 
 

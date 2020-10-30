@@ -97,7 +97,9 @@ setup(
         'pytest-cov==2.10.1',
         'pytest-forked==1.3.0',
         'py==1.9.0',
-        'msedge-selenium-tools==3.141.2'
+        'msedge-selenium-tools==3.141.2',
+        'soupsieve==2.0.1',
+        'beautifulsoup4==4.9.3'
 
     ],
     packages=[

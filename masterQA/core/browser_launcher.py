@@ -143,7 +143,5 @@ def DriverInstance(browser):
     driver.set_page_load_timeout(env.PAGE_LOAD_TIMEOUT)
     # Delete All Cookies
     driver.delete_all_cookies()
-    # Maximize the window
-    driver.maximize_window()
     # Functions returning driver
     return driver

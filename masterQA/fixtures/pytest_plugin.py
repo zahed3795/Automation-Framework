@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
 """ This is the pytest configuration file """
 
-import colorama
 import pytest
-import sys
 
 
 @pytest.fixture()
 def sb(request):
-    """ SeleniumBase as a pytest fixture.
+    """ As a pytest fixture.
         Usage example: "def test_one(sb):"
         You'll need to use this for tests that use other pytest fixtures. """
     from masterQA import BaseCase
@@ -29,7 +27,6 @@ def sb(request):
         request.cls.sb = BaseClass("base_method")
         request.cls.sb.setUp()
         request.cls.sb._needs_tearDown = True
-        request.cls.sb
         yield request.cls.sb
         if request.cls.sb._needs_tearDown:
             request.cls.sb.tearDown()

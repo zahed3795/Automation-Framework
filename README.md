@@ -61,14 +61,65 @@ class MyTestClass(BaseCase):
         self.Minimize_Screen()
         # This Function Will Press ENTER Key From Keyboard
         self.Press_Enter()
-        # This Function Will Scroll Element Into View
-        self.Scroll_Into_View()
+        # This Function Will Help you to click to an web element
+        self.Click("locator", locatorType= "Can be none if it is XPATH, CSS, Name and LinkText")
         # This Function Will Help you to Submit
         self.Submit("locator", locatorType= "Can be none if it is XPATH, CSS, Name and LinkText")
         # This Function Will Help you to Click
         self.Click("locator", locatorType= "Can be none if it is XPATH, CSS, Name and LinkText")
         # This Function Will set windows size
         self.set_window_size(1200, 1200)
+        # Print user agent in log
+        print(self.get_user_agent())
+        # It will take you to the browser that you launch at the beginning
+        self.switch_to_default_window()  
+        # Use for get system navigator language
+        print(self.get_locale_code())
+        # Useful for get page title
+        print(self.Get_page_title())
+        # Useful for get current page URL
+        print(self.Get_current_url())
+        # Refresh page and can mention delay if you want
+        self.Refresh_page(delay=5) or self.Refresh_page()
+        # Use in for scroll an element into view of the screen        
+        self.Scroll_Into_View('locator')
+        # Use it for select a dropdown by index
+        self.Select_by_index(1, 'locator')
+        # Use it for select a dropdown by value
+        self.Select_by_value('Type value', 'locator')
+        # Use it for select a dropdown by visible text
+        self.Select_by_visible_text('Type visible text', 'locator')
+        # Useful if you want to press Enter key from keyboard        
+        self.Press_Enter()
+        # This is ActionChains class and need to implement Action class methods
+        self.KeyBoard().perform()
+        # Useful for double click into element
+        self.Double_Click('locator')
+        # Use explicit wait over a element or mention time 
+        self.web_driver_wait('locator', delay=2) or self.web_driver_wait('locator')
+        # Works for submit somethings in page        
+        self.Submit('locator')
+        # It will enter text in a text box
+        self.Send_Text('Text', 'locator')
+        # It will clear text or a textbox
+        self.Clear_Textbox('Text', 'locator')
+        # Useful for replacing exiting text form textbox
+        self.Replace_existing_text('Text', 'locator')
+        # print page source in html format
+        print(self.get_beautiful_soup())
+        #Get all unique links in the html of the page source.
+        print(self.get_unique_links())
+        # This function print all unique links with status codes
+        self.print_unique_links_with_status_codes()
+        # helps download file. Mention location or by default it will download testing folder
+        self.Download_file('URL') or self.Download_file('URl','my location')
+        # helps download data. Mentioning `data name` is must and Mention location or by default it will download testing folder
+        self.save_data_as('myfile.txt', 'my location')
+        # helps download file. Mentioning `file name` is must and Mention location or by default it will download testing folder
+        self.save_file_as('myfile', 'my location')
+        # You can save unique links by using this function
+        url_link = self.get_unique_links()
+        self.save_data_as(url_link, 'myfile.txt')
 ```
 
 
