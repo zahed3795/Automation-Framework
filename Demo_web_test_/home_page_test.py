@@ -12,7 +12,7 @@ class MyTestClass(BaseCase):
     def test_anything(self):
         # Write your code here. Example:
         self.Open(env.URL)
-        self.set_window_size(1400, 1200)
+        self.set_window_size(1300, 800)
         self.Get_page_title() == "FINVIZ.com - Stock Screener"
         self.Click("//a[contains(text(),'Login')]")
         self.Clear_Textbox("//input[@name='email']")
