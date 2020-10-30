@@ -32,7 +32,9 @@ pip install --user pipenv
 pip install colorama
 cd masterQA\utilities\selenium_grid
 python download_selenium_server.py
-
+cd..
+cd..
+cd..
 
 
 
