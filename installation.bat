@@ -25,6 +25,7 @@ pip install colorama==0.4.4
 pip install urllib3==1.25.10
 pip install cssselect==1.1.0
 pip install pytest-html
+pip install seleniumbase
 py -m pip install --user virtualenv
 pip install --user pipenv
 pip install colorama

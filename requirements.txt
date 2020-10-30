@@ -17,5 +17,10 @@ setuptools-scm
 setuptools>=44.1.1
 importlib-metadata==2.0.0
 colorama==0.4.4
-urllib3==1.25.10
+urllib3~=1.25.11
 cssselect==1.1.0
+
+seleniumbase~=1.50.1
+idna~=2.10
+chardet~=3.0.4
+certifi~=2020.6.20
