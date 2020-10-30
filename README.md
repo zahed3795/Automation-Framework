@@ -37,19 +37,13 @@ $^*ENCRYPT=XBVURTE+KU0nQEMG?&#$
 
 Enter obfuscated/encrypted string: (CTRL-C to exit):
 
-```
-
-```
-Enter password to obfuscate: (CTRL-C to exit)
-Password:
-Here is the obfuscated password:
-$^*ENCRYPT=YEJUUS5TRTEW?&#$
-
 Inside a test, use the following to decrypt it:
 
-    from seleniumbase import encryption
+    from masterQA.common import encryption
     encryption.decrypt("$^*ENCRYPT=YEJUUS5TRTEW?&#$")
+
 ```
+
 
 # List of Keyword and How to Use it
 
