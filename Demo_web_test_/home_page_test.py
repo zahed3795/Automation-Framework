@@ -1,11 +1,13 @@
 from masterQA.fixtures.base_case import BaseCase
-from masterQA.data.settings import environment as env, USER_DATA as UD
+from masterQA.data.settings import environment as env
 from masterQA.common import encryption
 
+# Test Information
+USER_EMAIL = encryption.decrypt("$^*ENCRYPT=MhIVXBUeHGcxJV8=?&#$")
+USER_PASSWORD = encryption.decrypt("$^*ENCRYPT=ZWIjSx5uEhVYGwUQ?&#$")
+
+
 class MyTestClass(BaseCase):
-
-    # Test Information
-
 
     def test_anything(self):
         # Write your code here. Example:
@@ -14,9 +16,9 @@ class MyTestClass(BaseCase):
         self.Get_page_title() == "FINVIZ.com - Stock Screener"
         self.Click("//a[contains(text(),'Login')]")
         self.Clear_Textbox("//input[@name='email']")
-        self.Send_Text("//input[@name='email']", UD.USER_EMAIL)
+        self.Send_Text("//input[@name='email']", USER_EMAIL)
         self.Clear_Textbox("//input[@name='password']")
-        self.Send_Text("//input[@name='password']", UD.USER_PASSWORD)
+        self.Send_Text("//input[@name='password']", USER_PASSWORD)
         self.Submit("//input[@value='Log in']")
         self.Minimize_Screen()
         self.tearDown()
