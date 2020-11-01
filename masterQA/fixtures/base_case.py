@@ -22,7 +22,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from masterQA.core import browser_launcher
 from masterQA.data import settings
 from masterQA.data.settings import environment as env
-from masterQA.fixtures import page_utils
+from masterQA.fixtures import page_utils, js_utils
 from masterQA.fixtures import page_actions
 from colorama import Fore, Back, Style
 
@@ -51,6 +51,7 @@ class BaseCase(unittest.TestCase):
             if URL.startswith("://"):
                 # Convert URLs such as "://google.com" into "https://google.com"
                 URL = "https" + URL
+            js_utils.clear_out_console_logs(self.driver)
             self.driver.get(URL)
         else:
             print('Your URL is not in correct format')
@@ -72,7 +73,7 @@ class BaseCase(unittest.TestCase):
                 actions = self.KeyBoard()
                 actions.move_to_element(element).perform()
                 actions.click(element).perform()
-        except:
+        except ElementClickInterceptedException:
             print("Cannot click on the element with locator: " + str(locator) + " locatorType: " + str(locatorType))
 
     # Enter text - Send Keys
