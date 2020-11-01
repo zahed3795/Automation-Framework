@@ -3,7 +3,7 @@ This is a End to End Automation Framework
 
 <h2>Need to run installation.bat in CMD or terminal for installation and this step is must: 🚀</h2>
 
-**[installation.bat](https://github.com/zahed3795/Super-Framework/blob/master/installation.bat)
+[installation.bat](https://github.com/zahed3795/Super-Framework/blob/master/installation.bat)
 
 This is a Demo Test case. You just need to use `BaseCase` as gateway for End to End Automation world
 
