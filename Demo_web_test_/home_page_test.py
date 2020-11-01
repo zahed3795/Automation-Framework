@@ -1,6 +1,6 @@
 import time
 
-from masterQA.core.string import String
+from masterQA.core.string import StringBase
 from masterQA.fixtures.base_case import BaseCase
 from masterQA.data.settings import environment as env
 from masterQA.common import encryption
@@ -10,7 +10,7 @@ USER_EMAIL = encryption.decrypt("$^*ENCRYPT=RkVdG1VpaWYoRCc3MksZNQ91e1tCRg==?&#$
 USER_PASSWORD = encryption.decrypt("$^*ENCRYPT=ZWIjSx5uEhVYGwUQ?&#$")
 
 
-class MyTestClass(BaseCase, String):
+class MyTestClass(BaseCase, StringBase):
 
     def test_open_browser(self):
         # Write your code here. Example:

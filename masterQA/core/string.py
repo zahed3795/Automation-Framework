@@ -1,8 +1,5 @@
 """A test library for string manipulation and verification"""
 
-from string import ascii_lowercase, ascii_uppercase, digits
-import re
-
 
 def lower(string):
     return string.lower()
@@ -20,7 +17,7 @@ def _convert_to_index(value, name):
     return _convert_to_integer(value, name)
 
 
-def _convert_to_integer( value, name):
+def _convert_to_integer(value, name):
     try:
         return int(value)
     except ValueError:
@@ -28,7 +25,7 @@ def _convert_to_integer( value, name):
                          % (name, value))
 
 
-class String:
+class StringBase:
 
     def convert_to_lower_case(self, string):
         return print(lower("\n" + str(string)))
@@ -43,13 +40,12 @@ class String:
 
     def split_to_lines(self, string, start=0, end=None):
         """Splits the given string to lines"""
-
         start = _convert_to_index(start, 'start')
         end = _convert_to_index(end, 'end')
         lines = string.splitlines()[start:end]
-        return lines
+        return print(lines)
 
     def get_line(self, string, line_number):
         """Returns the specified line from the given ``string``."""
-        line_number = self._convert_to_integer(line_number, 'line_number')
+        line_number = _convert_to_integer(line_number, 'line_number')
         return string.splitlines()[line_number]
