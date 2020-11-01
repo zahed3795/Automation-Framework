@@ -18,7 +18,7 @@ class MyTestClass(BaseCase):
         # Write your code here. Example:
         self.Open('https://finviz.com/')
         self.set_window_size(1400, 800)
-        self.Get_page_title() == "FINVIZ.com - Stock Screener"
+        assert self.Get_page_title() == "FINVIZ.com - Stock Screener"
         self.Click("//a[contains(text(),'Login')]")
         self.Clear_Textbox("//input[@name='email']")
         self.Send_Text("//input[@name='email']", USER_EMAIL)
