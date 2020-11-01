@@ -11,7 +11,7 @@ You'll probably want to customize this to your own environment and needs.
 # If the element to be acted on does not appear in time, the test fails.
 class environment:
     BROWSER = 'chrome'
-    URL = 'Use encryption'
+    URL = 'https://finviz.com/'
     USERNAME = 'Use encryption'
     PASSWORD = ' Use encryption'
     MINI_TIMEOUT = 2

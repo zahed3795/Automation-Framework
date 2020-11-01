@@ -126,4 +126,21 @@ class MyTestClass(BaseCase):
         self.save_data_as(url_link, 'myfile.txt')
 ```
 
+# This is a Demo Test case. You just need to use ```String``` as gateway for string world
+```python
+from masterQA.core.string import String
+from masterQA.fixtures.base_case import BaseCase
+
+class MyTestClass(BaseCase, String):
+
+    def test_anything(self):
+        # Write your code here. Example:
+        self.convert_to_lower_case('<----ABCD---->')  # Convert string into lower case
+        self.convert_to_upper_case('<----abcd---->')  # Convert string into upper case
+        self.get_line_count('\n1..a,\n2..a,\n3..a,\n4..a')  # Get line count from string
+        self.split_to_lines("\nfirst \n2nd \n3rd", 2)  # Split lines from string as parameter need argument
+
+
+```
+
 
