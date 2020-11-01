@@ -1,7 +1,7 @@
 # Super-Framework
 This is a End to End Automation Framework
 
-<h2><img title="Super-Framework" width="32" />  Need to run installation.bat in CMD or terminal for installation and this step is mustt: 🚀</h2>
+<h2>Need to run **[installation.bat](https://github.com/zahed3795/Super-Framework/blob/master/installation.bat) in CMD or terminal for installation and this step is must: 🚀</h2>
 
 This is a Demo Test case. You just need to use `BaseCase` as gateway for End to End Automation world
 
