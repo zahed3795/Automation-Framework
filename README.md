@@ -1,6 +1,8 @@
 # Super-Framework
 This is a End to End Automation Framework
 
+* Need to run installation.bat in CMD or terminal for installation and this step is must
+
 This is a Demo Test case. You just need to use `BaseCase` as gateway for End to End Automation world
 
 ```python
