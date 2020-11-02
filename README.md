@@ -18,7 +18,7 @@ USER_PASSWORD = encryption.decrypt("$^*ENCRYPT=ZWIjSx5uEhVYGwUQ?&#$")
 
 class MyTestClass(BaseCase):
 
-    def test_login(self):
+    def test_one(self):
         # Write your code here. Example:
         self.Open('https://finviz.com/')
         self.set_window_size(1400, 800)
@@ -139,6 +139,7 @@ class MyTestClass(BaseCase, StringBase):
         self.convert_to_upper_case('<----abcd---->')  # Convert string into upper case
         self.get_line_count('\n1..a,\n2..a,\n3..a,\n4..a')  # Get line count from string
         self.split_to_lines("\nfirst \n2nd \n3rd", 2)  # Split lines from string as parameter need argument
+        self.get_regexp_matches('the string','xxx') # Returns a list of all non-overlapping matches in the given string
 ```
 
 
