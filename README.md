@@ -135,11 +135,19 @@ class MyTestClass(BaseCase, StringBase):
 
     def test_anything(self):
         # Write your code here. Example:
-        self.convert_to_lower_case('<----ABCD---->')  # Convert string into lower case
-        self.convert_to_upper_case('<----abcd---->')  # Convert string into upper case
-        self.get_line_count('\n1..a,\n2..a,\n3..a,\n4..a')  # Get line count from string
-        self.split_to_lines("\nfirst \n2nd \n3rd", 2)  # Split lines from string as parameter need argument
-        self.get_regexp_matches('the string','xxx') # Returns a list of all non-overlapping matches in the given string
+        
+        # Convert string into lower case
+        self.convert_to_lower_case('<----ABCD---->')
+        # Convert string into upper case
+        self.convert_to_upper_case('<----abcd---->')
+        # Get line count from string
+        self.get_line_count('\n1..a,\n2..a,\n3..a,\n4..a')  
+        # Split lines from string as parameter need argument
+        self.split_to_lines("\nfirst \n2nd \n3rd", 2)  
+        # Returns a list of all non-overlapping matches in the given string
+        self.get_regexp_matches('the string','xxx') 
+        #Replaces ``search_for`` in the given ``string`` with ``replace_with`
+        self.replace_string('Hello_world!','In_god_we_trust')
 ```
 
 
