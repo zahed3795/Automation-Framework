@@ -37,7 +37,7 @@ class MyTestClass(BaseCase, StringBase):
         self.tearDown()
 
     def test_save_file(self):
-        self.Open('https://github.com/seleniumbase/SeleniumBase/')
+        self.Open('https://www.donaldjtrump.com/')
         url_link = self.get_unique_links()
         self.save_data_as(url_link, 'myfile.txt')
 
