@@ -1,8 +1,11 @@
 """A test library for string manipulation and verification"""
 import re
+from random import randint
+from string import ascii_lowercase, ascii_uppercase, digits
 
 TRUE_STRINGS = {'TRUE', 'YES', 'ON', '1'}
 FALSE_STRINGS = {'FALSE', 'NO', 'OFF', '0', 'NONE', ''}
+
 
 def lower(string):
     return string.lower()
@@ -27,19 +30,11 @@ def _convert_to_integer(value, name):
         raise ValueError("Cannot convert '%s' argument '%s' to an integer."
                          % (name, value))
 
+def isinstance(x, A_tuple):
+  pass
 
-def isinstance(x, A_tuple):  # real signature unknown; restored from __doc__
-    """
-    Return whether an object is an instance of a class or of a subclass thereof.
 
-    A tuple, as in ``isinstance(x, (A, B, ...))``, may be given as the target to
-    check against. This is equivalent to ``isinstance(x, A) or isinstance(x, B)
-    or ...`` etc.
-    """
-    pass
 def is_string(item):
-    # Returns False with `b'bytes'` on IronPython on purpose. Results of
-    # `isinstance(item, basestring)` would depend on IronPython 2.7.x version.
     return isinstance(item, (str, 'string'))
 
 
@@ -104,3 +99,97 @@ class StringBase:
             return int(group)
         except ValueError:
             return group
+
+    def replace_string(self, string, search_for, replace_with, count=-1):
+        """Replaces ``search_for`` in the given ``string`` with ``replace_with``.
+        Examples: self.replace_string('Hello_world!','In_god_we_trust')
+        """
+        count = _convert_to_integer(count, 'count')
+        return string.replace(search_for, replace_with, count)
+
+    def replace_string_using_regexp(self, string, pattern, replace_with, count=-1):
+        """Replaces ``pattern`` in the given ``string`` with ``replace_with``.
+            Replace String Using Regexp | ${str} | (Hello|Hi) | ${EMPTY} | count=1 |
+        """
+        count = _convert_to_integer(count, 'count')
+        # re.sub handles 0 and negative counts differently than string.replace
+        if count == 0:
+            return string
+        return re.sub(pattern, replace_with, string, max(count, 0))
+
+    def remove_string(self, string, *removables):
+        """Removes all ``removables`` from the given ``string``"""
+        for removable in removables:
+            string = self.replace_string(string, removable, '')
+        return string
+
+    def split_string(self, string, separator=None, max_split=-1):
+        """Splits the ``string`` using ``separator`` as a delimiter string."""
+        if separator == '':
+            separator = None
+        max_split = _convert_to_integer(max_split, 'max_split')
+        return string.split(separator, max_split)
+
+    def split_string_from_right(self, string, separator=None, max_split=-1):
+        """Splits the ``string`` using ``separator`` starting from right."""
+        if separator == '':
+            separator = None
+        max_split = _convert_to_integer(max_split, 'max_split')
+        return string.rsplit(separator, max_split)
+
+    def split_string_to_characters(self, string):
+        """Splits the given ``string`` to characters."""
+        return list(string)
+
+    def fetch_from_left(self, string, marker):
+        """Returns contents of the ``string`` before the first occurrence of ``marker``."""
+        return string.split(marker)[0]
+
+    def fetch_from_right(self, string, marker):
+        """Returns contents of the ``string`` after the last occurrence of ``marker``."""
+        return string.split(marker)[-1]
+
+    def generate_random_string(self, length=8, chars='[LETTERS][NUMBERS]'):
+        """Generates a string with a desired ``length`` from the given ``chars``."""
+        if length == '':
+            length = 8
+        length = _convert_to_integer(length, 'length')
+        for name, value in [('[LOWER]', ascii_lowercase),
+                            ('[UPPER]', ascii_uppercase),
+                            ('[LETTERS]', ascii_lowercase + ascii_uppercase),
+                            ('[NUMBERS]', digits)]:
+            chars = chars.replace(name, value)
+        maxi = len(chars) - 1
+        return ''.join(chars[randint(0, maxi)] for _ in range(length))
+
+    def get_substring(self, string, start, end=None):
+        """Returns a substring from ``start`` index to ``end`` index."""
+        start = _convert_to_index(start, 'start')
+        end = _convert_to_index(end, 'end')
+        return string[start:end]
+
+    def strip_string(self, string, mode='both', characters=None):
+        """Remove leading and/or trailing whitespaces from the given string."""
+        try:
+            method = {'BOTH': string.strip,
+                      'LEFT': string.lstrip,
+                      'RIGHT': string.rstrip,
+                      'NONE': lambda characters: string}[mode.upper()]
+        except KeyError:
+            raise ValueError("Invalid mode '%s'." % mode)
+        return method(characters)
+
+    def should_be_lowercase(self, string, msg=None):
+        """Fails if the given ``string`` is not in lowercase."""
+        if not string.islower():
+            return False
+
+    def should_be_uppercase(self, string):
+        """Fails if the given ``string`` is not in uppercase."""
+        if not string.isupper():
+            return False
+
+    def should_be_titlecase(self, string, msg=None):
+        """Fails if given ``string`` is not title."""
+        if not string.istitle():
+            return False
