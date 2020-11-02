@@ -126,7 +126,7 @@ class MyTestClass(BaseCase):
         self.save_data_as(url_link, 'myfile.txt')
 ```
 
-# This is a Demo Test case. You just need to use ```String``` as gateway for string world
+# This is a Demo Test case. You just need to use ```StringBase``` as gateway for string world
 ```python
 from masterQA.core.string import StringBase
 from masterQA.fixtures.base_case import BaseCase
