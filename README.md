@@ -18,7 +18,7 @@ USER_PASSWORD = encryption.decrypt("$^*ENCRYPT=ZWIjSx5uEhVYGwUQ?&#$")
 
 class MyTestClass(BaseCase):
 
-    def test_login(self):
+    def test_one(self):
         # Write your code here. Example:
         self.Open('https://finviz.com/')
         self.set_window_size(1400, 800)
