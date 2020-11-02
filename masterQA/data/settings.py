@@ -49,7 +49,7 @@ CHROME_START_WIDTH = 1250
 CHROME_START_HEIGHT = 840
 HEADLESS_START_WIDTH = 1440
 HEADLESS_START_HEIGHT = 1880
-
+ARCHIVE_EXISTING_DOWNLOADS = "archived_files"
 
 # The default message that appears when you don't specify a custom message
 MASTERQA_DEFAULT_VALIDATION_MESSAGE = "Does the page look good?"
