@@ -3,7 +3,7 @@ The setup package to install Super-Framework dependencies and plugins
 (Uses selenium 3.x)
 """
 
-from setuptools import setup, find_packages  # noqa
+from setuptools import setup, find_packages  #
 import os
 import sys
 
@@ -20,7 +20,7 @@ with open(os.path.join(
 
 flake8_status = os.system("flake8 --exclude=temp")
 if flake8_status != 0:
-    print("\nWARNING! Fix flake8 issues before publishing to PyPI!\n")
+    print("\nWARNING! Fix flake8 issues before publishing!\n")
     sys.exit()
 
 
@@ -63,7 +63,7 @@ setup(
     install_requires=[
         'webdriver_manager==3.2.2',
         'pytest==6.1.1',
-        'pytest-xdist==2.1.0;python_version<"3.5"',
+        'pytest-xdist==2.1.0;',
         'parameterized==0.7.4',
         'cryptography==3.1.1',
         'requests==2.24.0',
