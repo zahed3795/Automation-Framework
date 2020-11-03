@@ -53,3 +53,4 @@ tornado
 certifi
 allure-pytest
 pdfminer.six
+pytest
