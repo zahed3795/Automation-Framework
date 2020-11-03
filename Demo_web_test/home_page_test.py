@@ -1,17 +1,17 @@
 import os
 import time
 
-from masterQA.core.string import StringBase
-from masterQA.fixtures.base_case import BaseCase
-from masterQA.data.settings import environment as env
-from masterQA.common import encryption
+from heisenberg.core.string import StringBase
+from heisenberg.fixtures.base_case import Base
+from heisenberg.data.settings import environment as env
+from heisenberg.common import encryption
 
 # Test Information
 USER_EMAIL = encryption.decrypt("$^*ENCRYPT=RkVdG1VpaWYoRCc3MksZNQ91e1tCRg==?&#$")
 USER_PASSWORD = encryption.decrypt("$^*ENCRYPT=ZWIjSx5uEhVYGwUQ?&#$")
 
 
-class MyTestClass(BaseCase, StringBase):
+class MyTestClass(Base, StringBase):
 
     def test_open_browser(self):
         # Write your code here. Example:

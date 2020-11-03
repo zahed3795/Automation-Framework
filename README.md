@@ -8,15 +8,15 @@ This is a End to End Automation Framework
 This is a Demo Test case. You just need to use `BaseCase` as gateway for End to End Automation world
 
 ```python
-from masterQA.fixtures.base_case import BaseCase
-from masterQA.common import encryption
+from heisenberg.fixtures.base_case import Base
+from heisenberg.common import encryption
 
 # Test Information
 USER_EMAIL = encryption.decrypt("$^*ENCRYPT=MhIVXBUeHGcxJV8=?&#$")
 USER_PASSWORD = encryption.decrypt("$^*ENCRYPT=ZWIjSx5uEhVYGwUQ?&#$")
 
 
-class MyTestClass(BaseCase):
+class MyTestClass(Base):
 
     def test_one(self):
         # Write your code here. Example:
@@ -52,10 +52,10 @@ Inside a test, use the following to decrypt it:
 # List of Keyword and How to Use it
 
 ```python
-from masterQA.fixtures.base_case import BaseCase
+from heisenberg.fixtures.base_case import Base
 
 
-class MyTestClass(BaseCase):
+class MyTestClass(Base):
 
     def test_anything(self):
         # Write your code here. Example:
@@ -128,10 +128,10 @@ class MyTestClass(BaseCase):
 
 # This is a Demo Test case. You just need to use ```StringBase``` as gateway for string world
 ```python
-from masterQA.core.string import StringBase
-from masterQA.fixtures.base_case import BaseCase
+from heisenberg.core.string import StringBase
+from heisenberg.fixtures.base_case import Base
 
-class MyTestClass(BaseCase, StringBase):
+class MyTestClass(Base, StringBase):
 
     def test_anything(self):
         # Write your code here. Example:

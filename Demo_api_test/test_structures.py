@@ -2,7 +2,7 @@
 
 import pytest
 
-from masterQA.requests.structures import CaseInsensitiveDict, LookupDict
+from heisenberg.requests.structures import CaseInsensitiveDict, LookupDict
 
 
 class TestCaseInsensitiveDict:

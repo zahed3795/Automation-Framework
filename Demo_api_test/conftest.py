@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import pytest
-from masterQA.requests.compat import urljoin
+from heisenberg.requests.compat import urljoin
 
 
 def prepare_url(value):
