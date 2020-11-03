@@ -7,7 +7,7 @@ Then enter the password.
 The result is an encrypted password.
 """
 
-from heisenberg.common import encryption
+from framework.common import encryption
 import getpass
 import time
 

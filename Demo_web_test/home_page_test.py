@@ -1,10 +1,10 @@
 import os
 import time
 
-from heisenberg.core.string import StringBase
-from heisenberg.fixtures.base_case import Base
-from heisenberg.data.settings import environment as env
-from heisenberg.common import encryption
+from framework.core.string import StringBase
+from framework.fixtures.base_case import Base
+from framework.data.settings import environment as env
+from framework.common import encryption
 
 # Test Information
 USER_EMAIL = encryption.decrypt("$^*ENCRYPT=RkVdG1VpaWYoRCc3MksZNQ91e1tCRg==?&#$")

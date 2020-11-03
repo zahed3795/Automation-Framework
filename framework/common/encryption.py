@@ -5,7 +5,7 @@
 import base64
 import codecs
 import hashlib
-from heisenberg.data import settings
+from framework.data import settings
 
 
 def str_xor(string, key):

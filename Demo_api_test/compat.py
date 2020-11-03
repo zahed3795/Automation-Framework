@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from heisenberg.requests.compat import is_py3
+from framework.requests.compat import is_py3
 
 
 try:

@@ -10,8 +10,8 @@ from webdriver_manager.microsoft import IEDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from webdriver_manager.opera import OperaDriverManager
 from selenium.common.exceptions import WebDriverException
-from heisenberg import drivers
-from heisenberg.data.settings import environment as env
+from framework import drivers
+from framework.data.settings import environment as env
 from webdriver_manager.driver import ChromeDriver
 from webdriver_manager.utils import download_file, save_file, ChromeType
 from colorama import Fore, Back, Style

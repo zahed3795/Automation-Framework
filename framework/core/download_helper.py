@@ -1,7 +1,7 @@
 import os
 import shutil
 import time
-from heisenberg.data import settings
+from framework.data import settings
 
 
 # Folder for saving downloaded files.

@@ -19,11 +19,11 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
-from heisenberg.core import browser_launcher
-from heisenberg.data import settings
-from heisenberg.data.settings import environment as env
-from heisenberg.fixtures import page_utils, js_utils
-from heisenberg.fixtures import page_actions
+from framework.core import browser_launcher
+from framework.data import settings
+from framework.data.settings import environment as env
+from framework.fixtures import page_utils, js_utils
+from framework.fixtures import page_actions
 from colorama import Fore, Back, Style
 
 logging.getLogger("requests").setLevel(logging.ERROR)

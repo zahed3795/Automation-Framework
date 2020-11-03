@@ -16,8 +16,8 @@ from selenium.webdriver.remote.errorhandler import NoSuchElementException
 from selenium.webdriver.remote.errorhandler import NoAlertPresentException
 from selenium.webdriver.remote.errorhandler import NoSuchFrameException
 from selenium.webdriver.remote.errorhandler import NoSuchWindowException
-from heisenberg.data import settings
-from heisenberg.fixtures import page_utils
+from framework.data import settings
+from framework.fixtures import page_utils
 
 
 def timeout(secToWait=None):

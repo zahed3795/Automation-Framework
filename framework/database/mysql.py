@@ -3,9 +3,9 @@ Wrapper for MySQL DB functions to make life easier.
 """
 
 import time
-from heisenberg import config as sb_config
-from heisenberg.data import settings
-from heisenberg.config import settings_parser
+from framework import config as sb_config
+from framework.data import settings
+from framework.config import settings_parser
 
 
 class DatabaseManager:

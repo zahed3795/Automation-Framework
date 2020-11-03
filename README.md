@@ -8,8 +8,8 @@ This is a End to End Automation Framework
 This is a Demo Test case. You just need to use `BaseCase` as gateway for End to End Automation world
 
 ```python
-from heisenberg.fixtures.base_case import Base
-from heisenberg.common import encryption
+from framework.fixtures.base_case import Base
+from framework.common import encryption
 
 # Test Information
 USER_EMAIL = encryption.decrypt("$^*ENCRYPT=MhIVXBUeHGcxJV8=?&#$")
@@ -52,7 +52,7 @@ Inside a test, use the following to decrypt it:
 # List of Keyword and How to Use it
 
 ```python
-from heisenberg.fixtures.base_case import Base
+from framework.fixtures.base_case import Base
 
 
 class MyTestClass(Base):
@@ -128,8 +128,8 @@ class MyTestClass(Base):
 
 # This is a Demo Test case. You just need to use ```StringBase``` as gateway for string world
 ```python
-from heisenberg.core.string import StringBase
-from heisenberg.fixtures.base_case import Base
+from framework.core.string import StringBase
+from framework.fixtures.base_case import Base
 
 class MyTestClass(Base, StringBase):
 

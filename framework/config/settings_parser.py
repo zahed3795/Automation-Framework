@@ -1,5 +1,5 @@
 import re
-from heisenberg.data import settings
+from framework.data import settings
 
 
 def set_settings(settings_file):

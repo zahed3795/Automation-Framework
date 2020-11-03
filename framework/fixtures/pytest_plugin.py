@@ -9,7 +9,7 @@ def sb(request):
     """ As a pytest fixture.
         Usage example: "def test_one(sb):"
         You'll need to use this for tests that use other pytest fixtures. """
-    from heisenberg import Base
+    from framework import Base
 
     class BaseClass(Base):
 
