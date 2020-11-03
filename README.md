@@ -1,7 +1,7 @@
 # Super-Framework
 This is a End to End Automation Framework
 
-<h2>Need to run pip install -r requirements.txt and python python install setup.py in terminal for installation and this step is must: 🚀</h2>
+<h2>Need to run pip install -r requirements.txt and python install setup.py in terminal for installation and this step is must: 🚀</h2>
 
 [installation.bat](https://github.com/zahed3795/Super-Framework/blob/master/installation.bat)
 [setup.py](https://github.com/zahed3795/Super-Framework/blob/master/setup.py) -->python install setup.py and pip install -r requirements.txt
