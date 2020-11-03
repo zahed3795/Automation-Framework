@@ -5,11 +5,18 @@ from setuptools import setup, find_packages
 import os
 import sys
 
+this_dir = os.path.abspath(os.path.dirname(__file__))
+long_description = None
+total_description = None
+# Get the package version from the framework/__version__.py file
+about = {}
+with open(os.path.join(
+        this_dir, 'framework', '__version__.py'), 'rb') as f:
+    exec(f.read().decode('utf-8'), about)
 
-__version__ = 1.0
 setup(
     name='Super-Framework',
-    version=__version__,
+    version=about['__version__'],
     description='The complete web automation library for end-to-end testing.',
     url='https://github.com/zahed3795/Super-Framework',
     platforms=["Windows"],
@@ -45,18 +52,18 @@ setup(
         'pytest-html==2.1.1',
         'numpy==1.19.2',
         'selenium==3.141.0',
-        'setuptools-scm',
+        'setuptools>=50.3.2',
         'setuptools>=44.1.1',
         'importlib-metadata == 2.0.0',
         'colorama==0.4.4',
-        'urllib3=1.25.11',
+        'urllib3==1.25.11',
         'cssselect==1.1.0',
         'chardet==3.0.4',
         'certifi==2020.6.20',
         'cryptography==3.1.1',
         'pytest-bdd==4.0.1',
         'pytest-bdd-web==0.1.1',
-        'zipp==3.3.1;python_version',
+        'zipp==3.3.1',
         'virtualenv>=20.0.35',
         'pymysql==0.10.1',
         'pyopenssl==19.1.0',
@@ -71,27 +78,27 @@ setup(
         'beautifulsoup4==4.9.3',
     ],
     packages=[
-        'heisenberg',
-        'heisenberg.commands',
-        'heisenberg.common',
-        'heisenberg.config',
-        'heisenberg.core',
-        'heisenberg.drivers',
-        'heisenberg.data',
-        'heisenberg.fixtures',
-        'heisenberg.database',
-        'heisenberg.plugins',
-        'heisenberg.utilities',
+        'framework',
+        'framework.commands',
+        'framework.common',
+        'framework.config',
+        'framework.core',
+        'framework.drivers',
+        'framework.data',
+        'framework.fixtures',
+        'framework.database',
+        'framework.plugins',
+        'framework.utilities',
 
     ],
     include_package_data=True,
     entry_points={
         'console_scripts': [
-            'heisenberg = heisenberg.commands.run:main',
-            'zahed = heisenberg.commands.run:main',
-            'qa = heisenberg.commands.run:main',
-        ],
-        'pytest11': ['heisenberg = heisenberg.plugins.pytest_plugin']
+            'heisenberg = framework.commands.run:main',
+            'zahed = framework.commands.run:main',
+            'qa = framework.commands.run:main',
+        ]
+        #,'pytest11': ['framework = framework.plugins.pytest_plugin']
     }
 )
 
