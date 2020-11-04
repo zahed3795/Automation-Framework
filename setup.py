@@ -97,7 +97,7 @@ setup(
             'zahed = framework.commands.run:main',
             'qa = framework.commands.run:main',
         ]
-        #,'pytest11': ['framework = framework.plugins.pytest_plugin']
+        ,'pytest11': ['framework = framework.plugins.pytest_plugin']
     }
 )
 
