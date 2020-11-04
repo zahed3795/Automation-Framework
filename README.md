@@ -5,11 +5,11 @@ This is a End to End Automation Framework
 
 [installation.bat](https://github.com/zahed3795/Super-Framework/blob/master/installation.bat)
 
-This is a Demo Test case. You just need to use `BaseCase` as gateway for End to End Automation world
+This is a Demo Test case. You just need to use `Base` as gateway for End to End Automation world
 
 ```python
 from framework.fixtures.base_case import Base
-from framework.common import encryption
+from framework.crypt import encryption
 
 # Test Information
 USER_EMAIL = encryption.decrypt("$^*ENCRYPT=MhIVXBUeHGcxJV8=?&#$")
@@ -31,7 +31,7 @@ class MyTestClass(Base):
         self.Submit("//input[@value='Log in']")
 ```
 
-For Data encrypt and decrypt, you can go to `masterQA/common/unobfuscate` and need to run `main` for encrypts data also do not forget to add```from masterQA.common import encryption``` as import where you want to use it. As example go to `Demo_web_test/home_page.py`
+For Data encrypt and decrypt, you can run `zahed encrypt` and `zahed decrypt` from console or cmd
 ```
 Enter obfuscated/encrypted string: (CTRL-C to exit):
 (Type data inside)
@@ -43,7 +43,7 @@ Enter obfuscated/encrypted string: (CTRL-C to exit):
 
 Inside a test, use the following to decrypt it:
 
-    from masterQA.common import encryption
+    from masterQA.crypt import encryption
     encryption.decrypt("$^*ENCRYPT=YEJUUS5TRTEW?&#$")
 
 ```
