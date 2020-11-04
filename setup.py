@@ -28,8 +28,8 @@ setup(
         "Development Status :: 1- Production/Stable",
         "Environment :: Web Environment",
         "Framework :: Automation For All",
-        "My Word :: Live Free Or Die"," All Life Matters"
-        "Intended Audience :: Information Technology,QA",
+        "My Word :: Live Free Or Die", " All Life Matters"
+                                       "Intended Audience :: Information Technology,QA",
         "License :: OSI Approved :: MIT License",
         "Operating System :: Windows",
         "Programming Language :: Python :: 3.7, 3.8, 3.9, ++",
@@ -93,11 +93,11 @@ setup(
     include_package_data=True,
     entry_points={
         'console_scripts': [
-            'heisenberg = framework.commands.run:main',
+            'sdet = framework.commands.run:main',
             'zahed = framework.commands.run:main',
             'qa = framework.commands.run:main',
         ]
-        ,'pytest11': ['framework = framework.plugins.pytest_plugin']
+        , 'pytest11': ['framework = framework.plugins.pytest_plugin']
     }
 )
 

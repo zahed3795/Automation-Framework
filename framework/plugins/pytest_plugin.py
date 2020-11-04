@@ -8,7 +8,7 @@ from framework import config as sb_config
 from framework.core import log_helper
 from framework.core import proxy_helper
 from framework.fixtures import constants
-from framework.data.settings import environment as env
+from framework.data.settings import environment, ValidBrowsers
 
 def pytest_addoption(parser):
     """
@@ -76,8 +76,8 @@ def pytest_addoption(parser):
                      action="store",
                      dest='browser',
                      type=str.lower,
-                     choices=constants.ValidBrowsers.valid_browsers,
-                     default=constants.Browser.GOOGLE_CHROME,
+                     choices=ValidBrowsers.valid_browsers,
+                     default=environment.BROWSER,
                      help="""Specifies the web browser to use. Default: Chrome.
                           If you want to use Firefox, explicitly indicate that.
                           Example: (--browser=firefox)""")

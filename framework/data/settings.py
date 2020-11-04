@@ -26,6 +26,13 @@ class Files:
     ARCHIVED_DOWNLOADS_FOLDER = "archived_files"
 
 
+class ValidBrowsers:
+    valid_browsers = (
+        ["chrome", "edge", "firefox", "ie",
+         "opera", "phantomjs", "safari",
+         "android", "iphone", "ipad", "remote"])
+
+
 # Time Out
 SMALL_TIMEOUT = 5
 MINI_TIMEOUT = 8
@@ -80,3 +87,5 @@ ENCRYPTION_KEY = "Pg^.l!8UdJ+Y7dMIe&fl*%!p9@ej]/#tL~3E4%6?"
 # Helps identify which strings/passwords have been obfuscated.
 OBFUSCATION_START_TOKEN = "$^*ENCRYPT="
 OBFUSCATION_END_TOKEN = "?&#$"
+
+ARCHIVE_EXISTING_LOGS = False

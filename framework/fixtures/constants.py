@@ -1,5 +1,5 @@
 """
-SeleniumBase constants are stored in this file.
+Constants are stored in this file.
 """
 
 
