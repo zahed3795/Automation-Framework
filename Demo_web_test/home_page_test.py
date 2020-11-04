@@ -4,7 +4,7 @@ import time
 from framework.core.string import StringBase
 from framework.fixtures.base_case import Base
 from framework.data.settings import environment as env
-from framework.common import encryption
+from framework.cryption import encryption
 
 # Test Information
 USER_EMAIL = encryption.decrypt("$^*ENCRYPT=RkVdG1VpaWYoRCc3MksZNQ91e1tCRg==?&#$")

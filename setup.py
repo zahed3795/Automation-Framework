@@ -80,7 +80,7 @@ setup(
     packages=[
         'framework',
         'framework.commands',
-        'framework.common',
+        'framework.cryption',
         'framework.config',
         'framework.core',
         'framework.drivers',

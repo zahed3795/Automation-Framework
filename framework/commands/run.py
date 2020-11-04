@@ -215,7 +215,7 @@ def show_options():
     sc = ("\n " + c2 + " ** " + c3 + " pytest CLI Options " + c2 + " ** " + cr)
     print(sc)
     print("")
-    line = "Here are some common pytest options to use with Super Framework:"
+    line = "Here are some cryption pytest options to use with Super Framework:"
     line = c1 + line + cr
     print(line)
     print("")
@@ -304,14 +304,14 @@ def main():
             show_install_usage()
     elif command == "encrypt" or command == "obfuscate":
         if len(command_args) >= 0:
-            from framework.common import obfuscate
+            from framework.cryption import obfuscate
             obfuscate.main()
         else:
             show_basic_usage()
             show_encrypt_usage()
     elif command == "decrypt" or command == "unobfuscate":
         if len(command_args) >= 0:
-            from framework.common import unobfuscate
+            from framework.cryption import unobfuscate
             unobfuscate.main()
         else:
             show_basic_usage()
