@@ -14,7 +14,7 @@ import time
 
 def main():
     try:
-        while(1):
+        while 1:
             print("\nEnter password to obfuscate: (CTRL-C to exit)")
             password = getpass.getpass()
             print("Verify password:")
@@ -29,7 +29,7 @@ def main():
             time.sleep(0.2)
             print("\nInside a test, use the following to decrypt it:\n")
             time.sleep(0.2)
-            print("    from seleniumbase import encryption")
+            print("    from framework.common import encryption")
             print('    encryption.decrypt("%s")' % encrypted_password)
             time.sleep(0.2)
     except KeyboardInterrupt:

@@ -8,13 +8,13 @@ from framework import config as sb_config
 from framework.core import log_helper
 from framework.core import proxy_helper
 from framework.fixtures import constants
-
+from framework.data.settings import environment as env
 
 def pytest_addoption(parser):
     """
     This plugin adds the following command-line options to pytest:
     --browser=BROWSER  (The web browser to use. Default: "chrome".)
-    --settings-file=FILE  (Override default framework settings.)
+    --settings-file=FILE  (Override default  settings.)
     --env=ENV  (Set the test env. Access with "self.env" in tests.)
     --data=DATA  (Extra test data. Access with "self.data" in tests.)
     --var1=DATA  (Extra test data. Access with "self.var1" in tests.)
@@ -64,9 +64,13 @@ def pytest_addoption(parser):
     --timeout-multiplier=MULTIPLIER  (Multiplies the default timeout values.)
     """
     colorama.init(autoreset=True)
+    c1 = colorama.Fore.BLUE + colorama.Back.LIGHTCYAN_EX
+    c2 = colorama.Fore.BLUE + colorama.Back.LIGHTGREEN_EX
     c3 = colorama.Fore.MAGENTA + colorama.Back.LIGHTYELLOW_EX
     cr = colorama.Style.RESET_ALL
-    s_str = "sdet"+ cr
+    s_str = ""
+    s_str = s_str.replace("", c1 + "sd" + c2 + "et" + cr)
+    s_str = s_str + cr + " " + c3 + "command-line options for pytest" + cr
     parser = parser.getgroup('sdet', s_str)
     parser.addoption('--browser',
                      action="store",
@@ -135,7 +139,7 @@ def pytest_addoption(parser):
                      default=None,
                      help="""The file that stores key/value pairs for
                           overriding values in the
-                          framework/config/settings.py file.""")
+                          framework/data/settings.py file.""")
     parser.addoption('--user_data_dir', '--user-data-dir',
                      dest='user_data_dir',
                      default=None,
@@ -371,7 +375,7 @@ def pytest_addoption(parser):
                           framework, such as loading custom JavaScript
                           libraries for various testing actions.
                           Setting this to True (--disable-csp) overrides the
-                          value set in framework/config/settings.py""")
+                          value set in framework/data/settings.py""")
     parser.addoption('--disable_ws', '--disable-ws', '--disable-web-security',
                      action="store_true",
                      dest='disable_ws',
@@ -613,10 +617,10 @@ def pytest_runtest_teardown(item):
 
 @pytest.fixture()
 def sb(request):
-    """ framework as a pytest fixture.
+    """ Super-Framework as a pytest fixture.
         Usage example: "def test_one(sb):"
         You'll need to use this for tests that use other pytest fixtures. """
-    from framework.fixtures.base_case import Base
+    from framework import Base
 
     class BaseClass(Base):
 
@@ -624,7 +628,7 @@ def sb(request):
             super(BaseClass, self).setUp()
 
         def tearDown(self):
-            self.save_teardown_screenshot()
+            #self.save_teardown_screenshot()
             super(BaseClass, self).tearDown()
 
         def base_method(self):
