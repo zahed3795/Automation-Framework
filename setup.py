@@ -39,7 +39,7 @@ setup(
     install_requires=[
         'webdriver_manager==3.2.2',
         'pytest==6.1.1',
-        'pytest-xdist==2.1.0;python_version<"3.5"',
+        'pytest-xdist==2.1.0',
         'parameterized==0.7.4',
         'cryptography==3.1.1',
         'requests==2.24.0',
@@ -53,7 +53,6 @@ setup(
         'numpy==1.19.2',
         'selenium==3.141.0',
         'setuptools>=50.3.2',
-        'setuptools>=44.1.1',
         'importlib-metadata == 2.0.0',
         'colorama==0.4.4',
         'urllib3==1.25.11',

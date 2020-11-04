@@ -8,9 +8,6 @@ import re
 import sys
 import time
 import urllib3
-if not urllib3:
-    raise Exception('Need to run installation.bat')
-
 import unittest
 from selenium.common.exceptions import (StaleElementReferenceException,
                                         MoveTargetOutOfBoundsException,
