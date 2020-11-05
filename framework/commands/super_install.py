@@ -63,15 +63,19 @@ def main():
 
     if name == "chrome" or name == "c":
         browser_launcher.DriverInstance(name)
-        print('chrome downloaded')
+        print('Chrome downloaded')
     elif name == "firefox" or name == "ff" or name == "f":
         browser_launcher.DriverInstance(name)
+        print('Firefox downloaded')
     elif name == "opera" or name == "o":
         browser_launcher.DriverInstance(name)
+        print('Opera downloaded')
     elif name == "edge" or name == "e":
         browser_launcher.DriverInstance(name)
+        print('Edge downloaded')
     elif name == "ie" or name == "i":
         browser_launcher.DriverInstance(name)
+        print('IE downloaded')
 
 
 if __name__ == "__main__":
