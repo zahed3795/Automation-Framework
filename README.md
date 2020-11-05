@@ -9,7 +9,7 @@ This is a End to End Automation Framework
 This is a Demo Test case. You just need to use `Base` as gateway for End to End Automation world
 
 ```python
-from framework.fixtures.base_case2 import Base
+from framework.fixtures.base_case import Base
 from framework.crypt import encryption
 
 # Test Information
@@ -40,11 +40,11 @@ class MyTestClass(Base):
 
 ### Install
 * Examples:
-``zahed install chrome latest``
-``zahed install firefox latest``
-``zahed install edge latest``
-``zahed install opera latest``
-``zahed install ie latest``
+``zahed install chrome``
+``zahed install firefox``
+``zahed install edge``
+``zahed install opera``
+``zahed install ie``
 
 ### encrypt / obfuscate
 
@@ -106,7 +106,7 @@ Inside a test, use the following to decrypt it:
 ### List of Keyword and How to Use it
 
 ```python
-from framework.fixtures.base_case2 import Base
+from framework.fixtures.base_case import Base
 
 
 class MyTestClass(Base):
