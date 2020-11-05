@@ -21,11 +21,9 @@ echo:
 python --version
 pip install -r requirements.txt
 python setup.py install
-py -m pip --upgrade pip
-pip install -e . --upgrade --no-cache-dir --progress-bar off
-zahed install chrome latest
-zahed install firefox latest
-zahed install opera latest
-zahed install edge latest
-zahed install ie latest
+zahed install chrome
+zahed install firefox
+zahed install opera
+zahed install edge
+zahed install ie
 
