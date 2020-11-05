@@ -183,7 +183,7 @@ class MyTestClass(Base):
 ###  This is a Demo Test case. You just need to use ```StringBase``` as gateway for string world
 ```python
 from framework.core.string import StringBase
-from framework.fixtures.base_case2 import Base
+from framework.fixtures.base_case import Base
 
 class MyTestClass(Base, StringBase):
 
