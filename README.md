@@ -1,6 +1,7 @@
 # Super-Framework
 This is a End to End Automation Framework
 
+
 <h2>Need to run installation.bat in CMD or terminal for installation and this step is must: 🚀</h2>
 
 [installation.bat](https://github.com/zahed3795/Super-Framework/blob/master/installation.bat)
@@ -8,7 +9,7 @@ This is a End to End Automation Framework
 This is a Demo Test case. You just need to use `Base` as gateway for End to End Automation world
 
 ```python
-from framework.fixtures.base_case import Base
+from framework.fixtures.base_case2 import Base
 from framework.crypt import encryption
 
 # Test Information
@@ -31,6 +32,59 @@ class MyTestClass(Base):
         self.Submit("//input[@value='Log in']")
 ```
 
+* To list all commands: ``zahed --help``
+### Options
+
+*For Usage options commands:
+``zahed options``
+
+### Install
+* Examples:
+``zahed install chrome latest``
+``zahed install firefox latest``
+``zahed install edge latest``
+``zahed install opera latest``
+``zahed install ie latest``
+
+### encrypt / obfuscate
+
+* Usage:
+``zahed encrypt``  OR  ``zahed obfuscate``
+
+### decrypt / unobfuscate
+
+* Usage:
+``zahed decrypt``  OR  ``zahed unobfuscate``
+
+### download
+
+* Usage:
+``zahed download [ITEM]``
+        (Options: server)
+
+* Example:
+``zahed download server``
+
+### grid-hub
+
+* Usage:
+``zahed grid-hub {start|stop|restart} [OPTIONS]``
+
+* Options:
+``-v``, ``--verbose``  (Increases verbosity of logging output.)
+``--timeout=TIMEOUT``  (Close idle browser windows after TIMEOUT seconds.)
+
+### grid-node
+
+* Usage:
+``zahed grid-node {start|stop|restart} [OPTIONS]``
+
+* Options:
+``--hub=HUB_IP`` (The Grid Hub IP Address to connect to.) (Default: ``127.0.0.1``)
+``-v``, ``--verbose``  (Increases verbosity of logging output.)
+
+
+
 For Data encrypt and decrypt, you can run `zahed encrypt` and `zahed decrypt` from console or cmd
 ```
 Enter obfuscated/encrypted string: (CTRL-C to exit):
@@ -49,10 +103,10 @@ Inside a test, use the following to decrypt it:
 ```
 
 
-# List of Keyword and How to Use it
+### List of Keyword and How to Use it
 
 ```python
-from framework.fixtures.base_case import Base
+from framework.fixtures.base_case2 import Base
 
 
 class MyTestClass(Base):
@@ -126,10 +180,10 @@ class MyTestClass(Base):
         self.save_data_as(url_link, 'myfile.txt')
 ```
 
-# This is a Demo Test case. You just need to use ```StringBase``` as gateway for string world
+###  This is a Demo Test case. You just need to use ```StringBase``` as gateway for string world
 ```python
 from framework.core.string import StringBase
-from framework.fixtures.base_case import Base
+from framework.fixtures.base_case2 import Base
 
 class MyTestClass(Base, StringBase):
 
