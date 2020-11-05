@@ -5,7 +5,6 @@ Wrapper for MySQL DB functions to make life easier.
 import time
 from framework import config as sb_config
 from framework.data import settings
-from framework.config import settings_parser
 
 
 class DatabaseManager:
@@ -23,18 +22,6 @@ class DatabaseManager:
         db_user = settings.DB_USERNAME
         db_pass = settings.DB_PASSWORD
         db_schema = settings.DB_SCHEMA
-        if hasattr(sb_config, "settings_file") and sb_config.settings_file:
-            override = settings_parser.set_settings(sb_config.settings_file)
-            if "DB_HOST" in override.keys():
-                db_server = override['DB_HOST']
-            if "DB_PORT" in override.keys():
-                db_port = override['DB_PORT']
-            if "DB_USERNAME" in override.keys():
-                db_user = override['DB_USERNAME']
-            if "DB_PASSWORD" in override.keys():
-                db_pass = override['DB_PASSWORD']
-            if "DB_SCHEMA" in override.keys():
-                db_schema = override['DB_SCHEMA']
         retry_count = 3
         backoff = 1.2  # Time to wait (in seconds) between retries.
         count = 0

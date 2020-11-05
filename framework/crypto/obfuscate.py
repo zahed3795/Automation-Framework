@@ -7,7 +7,7 @@ Then enter the password.
 The result is an encrypted password.
 """
 
-from framework.cryption import encryption
+from framework.crypto import encryption
 import getpass
 import time
 
@@ -29,7 +29,7 @@ def main():
             time.sleep(0.2)
             print("\nInside a test, use the following to decrypt it:\n")
             time.sleep(0.2)
-            print("    from framework.cryption import encryption")
+            print("    from framework.crypto import encryption")
             print('    encryption.decrypt("%s")' % encrypted_password)
             time.sleep(0.2)
     except KeyboardInterrupt:

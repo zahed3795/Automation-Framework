@@ -4,7 +4,7 @@ import time
 from framework.core.string import StringBase
 from framework.fixtures.base_case import Base
 from framework.data.settings import environment as env
-from framework.cryption import encryption
+from framework.crypto import encryption
 
 # Test Information
 USER_EMAIL = encryption.decrypt("$^*ENCRYPT=RkVdG1VpaWYoRCc3MksZNQ91e1tCRg==?&#$")
@@ -24,7 +24,6 @@ class MyTestClass(Base, StringBase):
         self.Clear_Textbox("//input[@name='password']")
         self.Send_Text("//input[@name='password']", USER_PASSWORD)
         self.Submit("//input[@value='Log in']")
-        self.tearDown()
 
     def test_Scroll_Into_View(self):
         # Write your code here. Example:
@@ -34,7 +33,6 @@ class MyTestClass(Base, StringBase):
         self.Scroll_Into_View("//a[contains(text(),'Screener')]")
         self.Select_by_index(1, "//select[@id='newsView']")
         self.Click("//a[contains(text(),'Crypto')]")
-        self.tearDown()
 
     def test_save_file(self):
         self.Open('https://www.donaldjtrump.com/')

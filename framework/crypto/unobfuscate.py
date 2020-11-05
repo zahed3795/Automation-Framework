@@ -8,7 +8,7 @@ The result is a plaintext string/password.
 Works the same as obfuscate.py, but doesn't mask the input.
 """
 
-from framework.cryption import encryption
+from framework.crypto import encryption
 import sys
 import time
 

@@ -79,7 +79,7 @@ setup(
     packages=[
         'framework',
         'framework.commands',
-        'framework.cryption',
+        'framework.crypto',
         'framework.config',
         'framework.core',
         'framework.drivers',
@@ -97,7 +97,6 @@ setup(
             'zahed = framework.commands.run:main',
             'qa = framework.commands.run:main',
         ]
-        , 'pytest11': ['framework = framework.plugins.pytest_plugin']
     }
 )
 

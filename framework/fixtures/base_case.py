@@ -7,6 +7,8 @@ import os
 import re
 import sys
 import time
+
+import pytest
 import urllib3
 import unittest
 from selenium.common.exceptions import (StaleElementReferenceException,
@@ -36,8 +38,6 @@ class Base(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(Base, self).__init__(*args, **kwargs)
         self.driver = None
-        if True:
-            self.driver = browser_launcher.DriverInstance(env.BROWSER)
         self.__last_page_load_url = "data:,"
 
     def Open(self, URL):
@@ -421,6 +421,48 @@ class Base(unittest.TestCase):
         byType = self.getByType(locatorType)
         element = self.driver.find_element(byType, locator)
         return element
+
+    def setUp(self):
+        self.driver = None
+        if True:
+            self.driver = browser_launcher.DriverInstance(env.BROWSER)
+
+    def tearDown(self):
+        self.driver.quit()
+
+
+@pytest.fixture()
+def pytest_setup(request):
+    from framework import Base
+
+    class BaseClass(Base):
+
+        def setUp(self):
+            print(Fore.LIGHTBLUE_EX + str('Pytest----->> as' + Fore.LIGHTMAGENTA_EX+str('Test Runner')))
+            super(BaseClass, self).setUp()
+
+        def tearDown(self):
+            super(BaseClass, self).tearDown()
+
+        def base_method(self):
+            pass
+
+    if request.cls:
+        request.cls.super = BaseClass("base_method")
+        request.cls.super.setUp()
+        request.cls.super._needs_tearDown = True
+        yield request.cls.super
+        request.cls.super.tearDown()
+        request.cls.super._needs_tearDown = False
+    else:
+        super = BaseClass("base_method")
+        super.setUp()
+        super._needs_tearDown = True
+        super
+        yield super
+        if super._needs_tearDown:
+            super.tearDown()
+            super._needs_tearDown = False
 
     @classmethod
     def setUpClass(cls):

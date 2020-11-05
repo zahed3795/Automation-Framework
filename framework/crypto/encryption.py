@@ -28,7 +28,7 @@ def str_xor(string, key):
 
 def is_obfuscated(string):
     # Based on settings, determines if a string has already been obfuscated.
-    # Obfuscated strings have a cryption predefined start token and end token.
+    # Obfuscated strings have a crypto predefined start token and end token.
     start_token = settings.OBFUSCATION_START_TOKEN
     end_token = settings.OBFUSCATION_END_TOKEN
     return string.startswith(start_token) and string.endswith(end_token)

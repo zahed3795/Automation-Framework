@@ -11,10 +11,12 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from webdriver_manager.opera import OperaDriverManager
 from selenium.common.exceptions import WebDriverException
 from framework import drivers
+from framework.commands.run import main
 from framework.data.settings import environment as env
 from webdriver_manager.driver import ChromeDriver
 from webdriver_manager.utils import download_file, save_file, ChromeType
 from colorama import Fore, Back, Style
+
 urllib3.disable_warnings()
 DRIVER_DIR = os.path.dirname(os.path.realpath(drivers.__file__))
 PLATFORM = sys.platform
@@ -33,7 +35,14 @@ if not os.environ["PATH"].startswith(DRIVER_DIR):
         os.pathsep + os.pathsep, os.pathsep)
     # Put the SeleniumBase DRIVER_DIR at the beginning of the System PATH
     os.environ["PATH"] = DRIVER_DIR + os.pathsep + os.environ["PATH"]
-if "win32" in PLATFORM:
+if "win32" in PLATFORM or "win64" in PLATFORM:
+    IS_WINDOWS = True
+    LOCAL_EDGEDRIVER = DRIVER_DIR + '/msedgedriver.exe'
+    LOCAL_IEDRIVER = DRIVER_DIR + '/IEDriverServer.exe'
+    LOCAL_CHROMEDRIVER = DRIVER_DIR + '/chromedriver.exe'
+    LOCAL_GECKODRIVER = DRIVER_DIR + '/geckodriver.exe'
+    LOCAL_OPERADRIVER = DRIVER_DIR + '/operadriver.exe'
+else:
     IS_WINDOWS = True
     LOCAL_EDGEDRIVER = DRIVER_DIR + '/msedgedriver.exe'
     LOCAL_IEDRIVER = DRIVER_DIR + '/IEDriverServer.exe'
@@ -68,7 +77,7 @@ def DriverInstance(browser):
                     # https://github.com/mozilla/geckodriver/releases/download/v0.27.0/geckodriver-v0.27.0-win64.zip
             if os.path.exists(DRIVER_DIR + '/geckodriver-v0.27.0-win64.zip'):
                 os.remove(DRIVER_DIR + "/geckodriver-v0.27.0-win64.zip")
-            print(Fore.GREEN+' FireFox running as driver')
+            print(Fore.GREEN + ' FireFox running as driver')
 
         except WebDriverException:
             driver = webdriver.Firefox(GeckoDriverManager().install())
@@ -85,7 +94,8 @@ def DriverInstance(browser):
             latest = "https://chromedriver.storage.googleapis.com/LATEST_RELEASE"
             url_request = requests.get(latest)
             use_version = url_request.text
-            file = download_file("http://chromedriver.storage.googleapis.com/"+use_version+"/chromedriver_win32.zip")
+            file = download_file(
+                "http://chromedriver.storage.googleapis.com/" + use_version + "/chromedriver_win32.zip")
             archive = save_file(file, DRIVER_DIR)
             archive.unpack(DRIVER_DIR)
 
@@ -123,7 +133,7 @@ def DriverInstance(browser):
                     driver = webdriver.Edge(EdgeChromiumDriverManager(path=DRIVER_DIR).install())
 
             # driver = webdriver.Edge(EdgeChromiumDriverManager().install())
-        print(Fore.GREEN+' Edge running as driver')
+        print(Fore.GREEN + ' Edge running as driver')
     # Will open Opera Driver if XML ``browser``value set as Opera else Chrome will be default driver
     elif browser.lower() == 'opera':
         try:
@@ -145,3 +155,7 @@ def DriverInstance(browser):
     driver.delete_all_cookies()
     # Functions returning driver
     return driver
+
+
+if __name__ == "__main__":
+    main()
