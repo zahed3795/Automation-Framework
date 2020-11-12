@@ -1,5 +1,6 @@
 # Super-Framework
 This is a End to End Automation Framework
+🗂️🖥️👨‍🏫📗📊📱⏺️🤖🌏🗺️💻🌐🏃♻️🗾🗄️📑📈🛂
 
 
 <h2>Need to run installation.bat in CMD or terminal for installation and this step is must: 🚀</h2>
