@@ -1,4 +1,4 @@
-# Super-Framework
+# Automation-Framework
 This is a End to End Automation Framework
 🗂️🖥️👨‍🏫📗📊📱⏺️🤖🌏🗺️💻🌐🏃♻️🗾🗄️📑📈🛂
 
